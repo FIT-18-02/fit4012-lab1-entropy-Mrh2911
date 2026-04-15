@@ -1,5 +1,7 @@
 #include <iostream>
+
 using namespace std;
+
 int gcd(int a, int b) {
     while (b != 0) {
         int temp = b;
@@ -8,6 +10,7 @@ int gcd(int a, int b) {
     }
     return a;
 }
+
 int extended_euclid(int a, int b, int &x, int &y) {
     if (b == 0) {
         x = 1;
@@ -20,12 +23,14 @@ int extended_euclid(int a, int b, int &x, int &y) {
     y = x1 - (a / b) * y1;
     return g;
 }
+
 int mod_inverse(int a, int m) {
     int x, y;
     int g = extended_euclid(a, m, x, y);
     if (g != 1) return -1;
     return (x % m + m) % m;
 }
+
 int main() {
     int a, m;
     while (cin >> a >> m) {
