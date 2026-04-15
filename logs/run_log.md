@@ -13,3 +13,6 @@
 - [x] Đã chạy với `6 9`
 - [x] Đã chạy với `7 26`
 - [x] Đã chạy với `11 13`
+
+## Điều em học được từ bài lab
+Em đã hiểu cách tính Entropy để đo độ hỗn loạn của thông tin và cách dùng thuật toán Euclid mở rộng để tìm nghịch đảo modulo cho các bài toán mã hóa.
