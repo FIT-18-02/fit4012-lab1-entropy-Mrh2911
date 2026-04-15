@@ -10,9 +10,9 @@ Triển khai mã nguồn C++ để thống kê tần suất ký tự và tính t
 ### 3.1 Entropy và redundancy
 | Input | Entropy | Redundancy | Nhận xét |
 |---|---:|---:|---|
-| aaaa | 0.0000 | 8.0000 | Entropy tối thiểu |
-| abcd | 2.0000 | 6.0000 | Ký tự không lặp |
-| hello world | 2.8454 | 5.1546 | Chuỗi tự nhiên |
+| aaaa | 0.0000 | 8.0000 | Entropy tối thiểu, độ dư thừa cao |
+| abcd | 2.0000 | 6.0000 | Ký tự không lặp lại |
+| hello world | 2.8454 | 5.1546 | Chuỗi có độ phức tạp trung bình |
 
 ### 3.2 Modulo inverse
 | a | m | Kết quả mong đợi | Kết quả chương trình |
