@@ -2,6 +2,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -17,18 +18,26 @@ double calculate_entropy(const string &text) {
 
     double entropy = 0.0;
     for (const auto &pair : freq) {
+        // p = số lần xuất hiện / tổng số ký tự
         double p = static_cast<double>(pair.second) / text.size();
+        // Công thức Shannon Entropy: H(X) = -sum(p * log2(p))
         entropy -= p * log2(p);
     }
     return entropy;
 }
 
 double calculate_redundancy(const string &text, int alphabet_size = 256) {
-    // TODO(student): implement redundancy = log2(N) - H(X)
-    // Hint: use calculate_entropy(text)
-    (void)text;
-    (void)alphabet_size;
-    return -1.0;
+    if (text.empty()) {
+        return 0.0;
+    }
+
+    double H_X = calculate_entropy(text);
+    
+    double log2_N = log2(static_cast<double>(alphabet_size));
+    
+    double redundancy = log2_N - H_X;
+
+    return (redundancy < 0) ? 0.0 : redundancy;
 }
 
 int main() {
@@ -39,7 +48,11 @@ int main() {
     double entropy = calculate_entropy(input);
     double redundancy = calculate_redundancy(input);
 
-    cout << "Entropy: " << entropy << '\n';
-    cout << "Redundancy: " << redundancy << '\n';
+    cout << fixed << setprecision(4);
+    cout << "--- Result ---" << endl;
+    cout << "Input string: \"" << input << "\"" << endl;
+    cout << "Entropy (H):    " << entropy << " bits/symbol" << endl;
+    cout << "Redundancy (R): " << redundancy << " bits/symbol" << endl;
+    
     return 0;
 }
