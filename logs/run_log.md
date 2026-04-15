@@ -15,4 +15,4 @@
 - [x] Đã chạy với `11 13`
 
 ## Điều em học được từ bài lab
-Em đã hiểu cách tính Entropy để đo độ hỗn loạn của thông tin và cách dùng thuật toán Euclid mở rộng để tìm nghịch đảo modulo cho các bài toán mã hóa.
+Em đã thực hành thành công việc tính toán các thông số lý thuyết thông tin và cài đặt thuật toán số học cơ bản.
