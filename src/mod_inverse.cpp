@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// Hàm tìm ước chung lớn nhất (GCD)
 int gcd(int a, int b) {
     while (b != 0) {
         int temp = b;
@@ -11,6 +12,7 @@ int gcd(int a, int b) {
     return a;
 }
 
+// Hàm Euclid mở rộng
 int extended_euclid(int a, int b, int &x, int &y) {
     if (b == 0) {
         x = 1;
@@ -25,12 +27,18 @@ int extended_euclid(int a, int b, int &x, int &y) {
     return g;
 }
 
+// Hoàn thiện hàm mod_inverse
 int mod_inverse(int a, int m) {
-    // TODO(student): implement modular inverse using extended_euclid()
-    // If inverse does not exist, return -1.
-    (void)a;
-    (void)m;
-    return -1;
+    int x, y;
+    int g = extended_euclid(a, m, x, y);
+    
+    // Nếu gcd(a, m) != 1 thì không tồn tại nghịch đảo modulo
+    if (g != 1) {
+        return -1;
+    }
+
+    // Vì x có thể âm, ta cần đưa nó về khoảng [0, m-1]
+    return (x % m + m) % m;
 }
 
 int main() {
@@ -38,14 +46,16 @@ int main() {
     cout << "Nhap a, m: ";
     cin >> a >> m;
 
-    if (gcd(a, m) != 1) {
+    int inv = mod_inverse(a, m);
+
+    if (inv == -1) {
         cout << "Khong ton tai nghich dao modulo vi gcd(a, m) != 1.\n";
-        return 0;
+    } else {
+        cout << "Nghich dao cua " << a << " mod " << m << " la: " << inv << '\n';
+        // Sử dụng 1LL để tránh tràn số khi nhân (long long)
+        cout << "Kiem tra: " << a << " * " << inv << " % " << m
+             << " = " << (1LL * a * inv % m) << '\n';
     }
 
-    int inv = mod_inverse(a, m);
-    cout << "Nghich dao cua " << a << " mod " << m << " la: " << inv << '\n';
-    cout << "Kiem tra: " << a << " * " << inv << " % " << m
-         << " = " << (1LL * a * inv % m) << '\n';
     return 0;
 }
